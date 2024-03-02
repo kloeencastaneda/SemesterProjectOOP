@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 namespace SemesterProjectTest
 {
-
+    //connection not working 
     public partial class Admin : Form
     {
 
