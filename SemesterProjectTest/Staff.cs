@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,11 @@ namespace SemesterProjectTest
 {
     public partial class Staff : Form
     {
+
+        static MongoClient dbClient = new MongoClient("mongodb+srv://kloeepratt:P0mP0mPur1n@cluster0.cokpytk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+
+        static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
+        static IMongoCollection<Restaraunt> collection = db.GetCollection<tables>("tables");
         public Staff()
         {
             InitializeComponent();
