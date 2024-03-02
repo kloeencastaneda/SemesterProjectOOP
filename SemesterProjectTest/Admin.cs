@@ -20,8 +20,8 @@ namespace SemesterProjectTest
         static MongoClient dbClient = new MongoClient("mongodb+srv://kloeepratt:P0mP0mPur1n@cluster0.cokpytk.mongodb.net/\r\n\r\n");
 
         static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
-        static IMongoCollection<restaraunt> collection = db.GetCollection<restaraunt>("restaraunt);
-        public Form1();
+        static IMongoCollection<Restaraunt> collection = db.GetCollection<users>("users");
+        public Form1()
         public Admin()
         {
             InitializeComponent();
@@ -82,7 +82,19 @@ namespace SemesterProjectTest
 
         private void adBtnUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var update = Builders<Restaraunt>.Update.Set("Username", txtUsername.Text).Set("Password", txtPassword.Text).Set("Role", txtRole.Text);
+                var filter = Builders<Restaraunt>.Filter.Eq("_id", ObjectId.Parse(txtID.Text));
 
+                collection.UpdateOne(filter, update);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Bad" + ex);
+            }
+
+            DisplayUsers();
         }
     }
 
@@ -90,7 +102,6 @@ namespace SemesterProjectTest
     class Users
         {
             [BsonId]
-
 
             public ObjectId _id { get; set; }
 
