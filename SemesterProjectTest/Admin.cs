@@ -14,18 +14,21 @@ using System.Xml.Linq;
 
 namespace SemesterProjectTest
 {
+
     public partial class Admin : Form
     {
 
-        static MongoClient dbClient = new MongoClient("mongodb+srv://kloeepratt:P0mP0mPur1n@cluster0.cokpytk.mongodb.net/\r\n\r\n");
+        static MongoClient dbClient = new MongoClient("mongodb+srv://kloeepratt:P0mP0mPur1n@cluster0.cokpytk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
         static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
         static IMongoCollection<Restaraunt> collection = db.GetCollection<users>("users");
-        public Form1()
+
+
+        
         public Admin()
         {
             InitializeComponent();
-            DisplayUsers;
+            DisplayUsers();
         }
 
         private void adBtnDisplay_Click(object sender, EventArgs e)
@@ -96,6 +99,13 @@ namespace SemesterProjectTest
 
             DisplayUsers();
         }
+
+        private void goMenu_Click(object sender, EventArgs e)
+        {
+            Menu window = new Menu();
+            this.Hide();
+            window.Show();
+        }
     }
 
 
@@ -120,4 +130,5 @@ namespace SemesterProjectTest
 
             public string Role { get; set; }
         }
+
     }

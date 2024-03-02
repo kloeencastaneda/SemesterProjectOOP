@@ -33,10 +33,11 @@
             // 
             // btn1
             // 
-            this.btn1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn1.Location = new System.Drawing.Point(46, 31);
+            this.btn1.BackColor = System.Drawing.Color.Green;
+            this.btn1.Location = new System.Drawing.Point(31, 20);
+            this.btn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(312, 182);
+            this.btn1.Size = new System.Drawing.Size(132, 118);
             this.btn1.TabIndex = 0;
             this.btn1.Text = "Table 1";
             this.btn1.UseVisualStyleBackColor = false;
@@ -44,10 +45,11 @@
             // 
             // Staff
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 837);
+            this.ClientSize = new System.Drawing.Size(793, 544);
             this.Controls.Add(this.btn1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Staff";
             this.Text = "Staff";
             this.ResumeLayout(false);
