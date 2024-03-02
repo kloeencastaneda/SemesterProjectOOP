@@ -40,7 +40,7 @@ namespace SemesterProjectTest
         {
             //need to database
 
-            int role = 2;
+            int role = 0;
 
             if (role == 0) { 
                 Admin window = new Admin();
