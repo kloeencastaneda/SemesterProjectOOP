@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,5 +30,27 @@ namespace SemesterProjectTest
             TableDetails window = new TableDetails();
             window.Show();
         }
+    }
+
+    class Tables
+    {
+        [BsonId]
+
+        public ObjectId _id { get; set; }
+
+        [BsonElement("Table ID")]
+        public int ID { get; set; }
+
+        [BsonElement("Order ID")]
+
+        public string Order { get; set; }
+
+        [BsonElement("Staff ID")]
+
+        public string Staff { get; set; }
+
+        [BsonElement("Customer ID")]
+
+        public string Customer { get; set; }
     }
 }
