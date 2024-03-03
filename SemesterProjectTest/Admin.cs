@@ -11,16 +11,12 @@ using System.Data.SQLite;
 using ZstdSharp;
 using System.ComponentModel.DataAnnotations;
 
-
-
 namespace SemesterProjectTest
 {
-
 
     public partial class Admin : Form
     {
 
-   
         public Admin()
         {
             InitializeComponent();
@@ -112,13 +108,11 @@ private void Admin_FormClosing(object sender, FormClosingEventArgs e)
         }
     }
 
-
-
     class Users
         {
 
         [Key]
-            public int ID { get; set; }
+           public int ID { get; set; }
 
             public string Username { get; set; }
 

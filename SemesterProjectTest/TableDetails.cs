@@ -15,9 +15,6 @@ namespace SemesterProjectTest
     public partial class TableDetails : Form
     {
 
-
-
-
         public TableDetails()
         {
             InitializeComponent();
