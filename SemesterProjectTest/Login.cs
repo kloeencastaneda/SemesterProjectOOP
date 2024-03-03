@@ -1,6 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using MongoDB.Driver;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +13,6 @@ namespace SemesterProjectTest
 {
     public partial class Login : Form
     {
-
-        static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/");
-        static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
-        static IMongoCollection<User> collection = db.GetCollection<User>("users");
 
         public Login()
         {
@@ -73,20 +67,18 @@ namespace SemesterProjectTest
     }
     class User
     {
-        [BsonId]
 
-        [BsonElement("ID")]
+
         public int ID { get; set; }
 
-        [BsonElement("Username")]
 
         public string Username { get; set; }
 
-        [BsonElement("Password")]
+
 
         public string Password { get; set; }
 
-        [BsonElement("Role")]
+
 
         public string Role { get; set; }
     }

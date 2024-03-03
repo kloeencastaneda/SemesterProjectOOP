@@ -1,6 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using MongoDB.Driver;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +13,6 @@ namespace SemesterProjectTest
 {
     public partial class Staff : Form
     {
-        static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/");
-        static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
-        static IMongoCollection<Tables> collection = db.GetCollection<Tables>("tables");
 
  
         public Staff()

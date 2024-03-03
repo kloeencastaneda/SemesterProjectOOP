@@ -7,30 +7,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System.Xml.Linq;
-using MongoDB.Driver.Core.Configuration;
+using System.Data.SQLite;
+using ZstdSharp;
+using System.ComponentModel.DataAnnotations;
+
+
 
 namespace SemesterProjectTest
 {
-    
+
+
     public partial class Admin : Form
     {
-       
-        static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/");
-        static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
-        static IMongoCollection<User> collection = db.GetCollection<User>("users");
 
+   
         public Admin()
-        { 
+        {
             InitializeComponent();
-            DisplayUsers();
+            LoadData();
+           
         }
 
+        private SQLiteConnection sql_conn;
+        private SQLiteCommand sql_cmd;
+        private SQLiteDataAdapter DB;
+        private DataSet DS;
+        private DataTable DT = new DataTable();
 
-        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
+        private void SetConnection()
+        {
+            sql_conn = new SQLiteConnection("Data Source=Restaraunt.db;Version=3;New=false;Compress=true;");
+        }
+
+        private void ExecuteQuery(string txtQuery)
+        {
+            SetConnection();
+            sql_conn.Open();
+            sql_cmd = sql_conn.CreateCommand();
+            sql_cmd.CommandText = txtQuery; 
+            sql_cmd.ExecuteNonQuery();
+            sql_conn.Close();
+        }
+
+private void Admin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Login window = new Login();
             window.Show();
@@ -41,10 +60,18 @@ namespace SemesterProjectTest
   
         }
 
-        public void DisplayUsers()
+    private void LoadData() 
         {
-            List<User> list = collection.AsQueryable().ToList();
-            dataGridView1.DataSource = list;
+            SetConnection();
+            sql_conn.Open();
+            sql_cmd = sql_conn.CreateCommand();
+            string CommandText = "SELECT * FROM users";
+            DB = new SQLiteDataAdapter(CommandText, sql_conn);
+            DS.Reset();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            dataGridView1.DataSource = DT;
+            sql_conn.Close();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -57,52 +84,24 @@ namespace SemesterProjectTest
 
         private void adBtnInsert_Click(object sender, EventArgs e)
         {
-            var filter = Builders<User>.Filter.Eq("ID", txtID.Text);
-            var docs = collection.Find(filter).ToList();
-            if (true)
-            {
-                User users = new User()
-                {
-                    ID = Convert.ToInt32(txtID.Text),
-                    Username = txtUsername.Text,
-                    Password = txtPassword.Text,
-                    Role = txtRole.Text,
-                };
-
-                collection.InsertOne(users);
-                DisplayUsers();
-            }
-            else
-            {
-                MessageBox.Show("The ID is already occupied.");
-            }
+            string txtQuery ="INSERT INTO users (ID,Username,Password,Role)" +"values('" + txtID.Text + "','" + txtUsername.Text + "','" + txtPassword.Text + "','" + txtRole.Text+"')";
+            ExecuteQuery(txtQuery);
+            LoadData();
         }
-
-
 
         private void adBtnDelete_Click(object sender, EventArgs e)
         {
-            var filter = Builders<User>.Filter.Eq("ID", txtID.Text);
-            collection.DeleteOne(filter);
-            DisplayUsers();
+            string txtQuery = "DELETE FROM users WHERE ID='" + txtID.Text + "'";
+            ExecuteQuery(txtQuery);
+            LoadData();
 
         }
 
         private void adBtnUpdate_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var update = Builders<User>.Update.Set("Username", txtUsername.Text).Set("Password", txtPassword.Text).Set("Role", txtRole.Text);
-                var filter = Builders<User>.Filter.Eq("ID", txtID.Text);
-
-                collection.UpdateOne(filter, update);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Bad" + ex);
-            }
-
-            DisplayUsers();
+            string txtQuery = "UPDATE users SET NAME ='" + txtID.Text + "','" + txtUsername.Text + "','" + txtPassword.Text + "','" + txtRole.Text + "'";
+            ExecuteQuery(txtQuery);
+            LoadData();
         }
 
         private void goMenu_Click(object sender, EventArgs e)
@@ -117,20 +116,13 @@ namespace SemesterProjectTest
 
     class Users
         {
-            [BsonId]
 
-            [BsonElement("ID")]
+        [Key]
             public int ID { get; set; }
-
-            [BsonElement("Username")]
 
             public string Username { get; set; }
 
-            [BsonElement("Password")]
-
             public string Password { get; set; }
-
-            [BsonElement("Role")]
 
             public string Role { get; set; }
         }
