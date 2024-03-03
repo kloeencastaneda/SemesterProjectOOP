@@ -34,7 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTableID = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.txtOrderID = new System.Windows.Forms.TextBox();
             this.txtStaffID = new System.Windows.Forms.TextBox();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
@@ -43,6 +43,7 @@
             this.staffBtnDelete = new System.Windows.Forms.Button();
             this.staffBtnUpdate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,9 +64,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(161)))), ((int)(((byte)(105)))));
             this.label1.Location = new System.Drawing.Point(23, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 27);
+            this.label1.Size = new System.Drawing.Size(109, 27);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Table Number";
+            this.label1.Text = "ID (Table)";
             // 
             // label2
             // 
@@ -111,12 +112,12 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Available?";
             // 
-            // txtTableID
+            // txtID
             // 
-            this.txtTableID.Location = new System.Drawing.Point(181, 36);
-            this.txtTableID.Name = "txtTableID";
-            this.txtTableID.Size = new System.Drawing.Size(100, 20);
-            this.txtTableID.TabIndex = 6;
+            this.txtID.Location = new System.Drawing.Point(181, 36);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.TabIndex = 6;
             // 
             // txtOrderID
             // 
@@ -216,7 +217,7 @@
             this.Controls.Add(this.txtCustomerID);
             this.Controls.Add(this.txtStaffID);
             this.Controls.Add(this.txtOrderID);
-            this.Controls.Add(this.txtTableID);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -239,7 +240,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTableID;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtOrderID;
         private System.Windows.Forms.TextBox txtStaffID;
         private System.Windows.Forms.TextBox txtCustomerID;
@@ -248,5 +249,6 @@
         private System.Windows.Forms.Button staffBtnDelete;
         private System.Windows.Forms.Button staffBtnUpdate;
         private System.Windows.Forms.Label label6;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

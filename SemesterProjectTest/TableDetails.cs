@@ -42,7 +42,7 @@ namespace SemesterProjectTest
         }  
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtTableID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtStaffID.Text =dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             txtOrderID.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtCustomerID.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -53,10 +53,8 @@ namespace SemesterProjectTest
         {
             [BsonId]
 
-            public ObjectId _id { get; set; }
-
-            [BsonElement("Table ID")]
-            public int ID { get; set; }
+            [BsonElement("ID")]
+            public string ID { get; set; }
 
             [BsonElement("Order ID")]
 
@@ -78,13 +76,13 @@ namespace SemesterProjectTest
 
         private void staffBtnInsert_Click(object sender, EventArgs e)
         {
-            var filter = Builders<Tables>.Filter.Eq("ID", txtTableID.Text);
+            var filter = Builders<Tables>.Filter.Eq("ID", txtID.Text);
             var docs = collection.Find(filter).ToList();
             if (true)
             {
                Tables tables = new Tables()
                {
-                    ID = Convert.ToInt32(txtTableID.Text),
+                    ID = txtID.Text,
                     Order = txtOrderID.Text,
                     Staff = txtStaffID.Text,
                     Customer = txtCustomerID.Text,
@@ -102,7 +100,7 @@ namespace SemesterProjectTest
 
         private void staffBtnDelete_Click(object sender, EventArgs e)
         {
-            var filter = Builders<Tables>.Filter.Eq("_id", txtTableID.Text);
+            var filter = Builders<Tables>.Filter.Eq("ID", txtID.Text);
             collection.DeleteOne(filter);
             DisplayTables();
         }
@@ -112,7 +110,7 @@ namespace SemesterProjectTest
             try
             {
                 var update = Builders<Tables>.Update.Set("Order", txtOrderID.Text).Set("Staff", txtStaffID.Text).Set("Customer", txtCustomerID.Text).Set("Available", txtAvailability.Text);
-                var filter = Builders<Tables>.Filter.Eq("_id", ObjectId.Parse(txtTableID.Text));
+                var filter = Builders<Tables>.Filter.Eq("ID", (txtID.Text));
 
                 collection.UpdateOne(filter, update);
             }
