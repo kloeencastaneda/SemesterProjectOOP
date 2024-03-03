@@ -30,7 +30,7 @@ namespace SemesterProjectTest
             List<Tables> list = collection.AsQueryable().ToList();
             dataGridView1.DataSource = list;
 
-        }
+        }  
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             txtTableID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -39,8 +39,6 @@ namespace SemesterProjectTest
             txtCustomerID.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             txtAvailability.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
         }
-
-
 
         class Tables
         {
@@ -71,25 +69,51 @@ namespace SemesterProjectTest
 
         private void staffBtnInsert_Click(object sender, EventArgs e)
         {
-            //var filter = Builders<User>.Filter.Eq("ID", txtID.Text);
-            //var docs = collection.Find(filter).ToList();
-            //if (true)
-            //{
-            //    User users = new User()
-            //    {
-            //        ID = Convert.ToInt32(txtID.Text),
-            //        Username = txtUsername.Text,
-            //        Password = txtPassword.Text,
-            //        Role = txtRole.Text,
-            //    };
+            var filter = Builders<Tables>.Filter.Eq("ID", txtTableID.Text);
+            var docs = collection.Find(filter).ToList();
+            if (true)
+            {
+               Tables tables = new Tables()
+               {
+                    ID = Convert.ToInt32(txtTableID.Text),
+                    Order = txtOrderID.Text,
+                    Staff = txtStaffID.Text,
+                    Customer = txtCustomerID.Text,
+                    Available = txtAvailability.Text,
+                };
 
-            //    collection.InsertOne(users);
-            //    DisplayUsers();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("The ID is already occupied.");
+               collection.InsertOne(tables);
+                DisplayTables();
+            }
+            else
+            {
+                MessageBox.Show("The ID is already occupied.");
             }
         }
+
+        private void staffBtnDelete_Click(object sender, EventArgs e)
+        {
+            var filter = Builders<Tables>.Filter.Eq("_id", txtTableID.Text);
+            collection.DeleteOne(filter);
+            DisplayTables();
+        }
+
+        private void staffBtnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var update = Builders<Tables>.Update.Set("Order", txtOrderID.Text).Set("Staff", txtStaffID.Text).Set("Customer", txtCustomerID.Text).Set("Available", txtAvailability.Text);
+                var filter = Builders<Tables>.Filter.Eq("_id", ObjectId.Parse(txtTableID.Text));
+
+                collection.UpdateOne(filter, update);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Bad" + ex);
+            }
+
+            DisplayTables();
+        }
     }
+
 }
