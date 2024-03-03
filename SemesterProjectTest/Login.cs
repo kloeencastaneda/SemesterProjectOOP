@@ -30,7 +30,7 @@ namespace SemesterProjectTest
         {
 
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e) //this is the username box
         {
 
         }
