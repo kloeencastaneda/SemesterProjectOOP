@@ -82,7 +82,7 @@ namespace SemesterProjectTest
 
         private void adBtnDelete_Click(object sender, EventArgs e)
         {
-            var filter = Builders<User>.Filter.Eq("_id", txtID.Text);
+            var filter = Builders<User>.Filter.Eq("ID", txtID.Text);
             collection.DeleteOne(filter);
             DisplayUsers();
 
@@ -93,7 +93,7 @@ namespace SemesterProjectTest
             try
             {
                 var update = Builders<User>.Update.Set("Username", txtUsername.Text).Set("Password", txtPassword.Text).Set("Role", txtRole.Text);
-                var filter = Builders<User>.Filter.Eq("_id", ObjectId.Parse(txtID.Text));
+                var filter = Builders<User>.Filter.Eq("ID", txtID.Text);
 
                 collection.UpdateOne(filter, update);
             }
@@ -118,8 +118,6 @@ namespace SemesterProjectTest
     class Users
         {
             [BsonId]
-
-            public ObjectId _id { get; set; }
 
             [BsonElement("ID")]
             public int ID { get; set; }

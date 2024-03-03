@@ -48,7 +48,7 @@ namespace SemesterProjectTest
         private void btnLogin_Click(object sender, EventArgs e)
         {
 
-            int role = 2;
+            int role = 0;
 
             if (role == 0) { 
                 Admin window = new Admin();
@@ -73,8 +73,6 @@ namespace SemesterProjectTest
     class User
     {
         [BsonId]
-
-        public ObjectId _id { get; set; }
 
         [BsonElement("ID")]
         public int ID { get; set; }

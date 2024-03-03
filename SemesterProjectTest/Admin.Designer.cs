@@ -32,7 +32,6 @@
             this.adBtnInsert = new System.Windows.Forms.Button();
             this.adBtnDelete = new System.Windows.Forms.Button();
             this.adBtnUpdate = new System.Windows.Forms.Button();
-            this.adBtnDisplay = new System.Windows.Forms.Button();
             this.goMenu = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -63,7 +62,7 @@
             this.adBtnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.adBtnInsert.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold);
             this.adBtnInsert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(169)))), ((int)(((byte)(110)))));
-            this.adBtnInsert.Location = new System.Drawing.Point(630, 258);
+            this.adBtnInsert.Location = new System.Drawing.Point(630, 265);
             this.adBtnInsert.Name = "adBtnInsert";
             this.adBtnInsert.Size = new System.Drawing.Size(89, 39);
             this.adBtnInsert.TabIndex = 1;
@@ -78,7 +77,7 @@
             this.adBtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.adBtnDelete.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold);
             this.adBtnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(169)))), ((int)(((byte)(110)))));
-            this.adBtnDelete.Location = new System.Drawing.Point(630, 320);
+            this.adBtnDelete.Location = new System.Drawing.Point(630, 351);
             this.adBtnDelete.Name = "adBtnDelete";
             this.adBtnDelete.Size = new System.Drawing.Size(89, 39);
             this.adBtnDelete.TabIndex = 2;
@@ -93,28 +92,13 @@
             this.adBtnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.adBtnUpdate.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold);
             this.adBtnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(169)))), ((int)(((byte)(110)))));
-            this.adBtnUpdate.Location = new System.Drawing.Point(630, 385);
+            this.adBtnUpdate.Location = new System.Drawing.Point(630, 435);
             this.adBtnUpdate.Name = "adBtnUpdate";
             this.adBtnUpdate.Size = new System.Drawing.Size(89, 39);
             this.adBtnUpdate.TabIndex = 3;
             this.adBtnUpdate.Text = "Update";
             this.adBtnUpdate.UseVisualStyleBackColor = false;
             this.adBtnUpdate.Click += new System.EventHandler(this.adBtnUpdate_Click);
-            // 
-            // adBtnDisplay
-            // 
-            this.adBtnDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(41)))));
-            this.adBtnDisplay.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(41)))));
-            this.adBtnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adBtnDisplay.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold);
-            this.adBtnDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(169)))), ((int)(((byte)(110)))));
-            this.adBtnDisplay.Location = new System.Drawing.Point(630, 454);
-            this.adBtnDisplay.Name = "adBtnDisplay";
-            this.adBtnDisplay.Size = new System.Drawing.Size(89, 39);
-            this.adBtnDisplay.TabIndex = 4;
-            this.adBtnDisplay.Text = "Display";
-            this.adBtnDisplay.UseVisualStyleBackColor = false;
-            this.adBtnDisplay.Click += new System.EventHandler(this.adBtnDisplay_Click);
             // 
             // goMenu
             // 
@@ -231,7 +215,6 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.goMenu);
-            this.Controls.Add(this.adBtnDisplay);
             this.Controls.Add(this.adBtnUpdate);
             this.Controls.Add(this.adBtnDelete);
             this.Controls.Add(this.adBtnInsert);
@@ -251,7 +234,6 @@
         private System.Windows.Forms.Button adBtnInsert;
         private System.Windows.Forms.Button adBtnDelete;
         private System.Windows.Forms.Button adBtnUpdate;
-        private System.Windows.Forms.Button adBtnDisplay;
         private System.Windows.Forms.Button goMenu;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtUsername;
