@@ -15,17 +15,51 @@ namespace SemesterProjectTest
 {
     public partial class Staff : Form
     {
-
-        static MongoClient dbClient = new MongoClient("mongodb+srv://kloeepratt:P0mP0mPur1n@cluster0.cokpytk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
-
+        static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/");
         static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
-        static IMongoCollection<Restaraunt> collection = db.GetCollection<tables>("tables");
+        static IMongoCollection<Tables> collection = db.GetCollection<Tables>("tables");
         public Staff()
         {
             InitializeComponent();
         }
 
         private void btn1_Click(object sender, EventArgs e)
+        {
+            TableDetails window = new TableDetails();
+            window.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TableDetails window = new TableDetails();
+            window.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TableDetails window = new TableDetails();
+            window.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TableDetails window = new TableDetails();
+            window.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            TableDetails window = new TableDetails();
+            window.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TableDetails window = new TableDetails();
+            window.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
         {
             TableDetails window = new TableDetails();
             window.Show();

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace SemesterProjectTest
 {
+    //needs to be able to apply discounts and manage staff
     public partial class Manager : Form
     {
         public Manager()
@@ -21,7 +22,7 @@ namespace SemesterProjectTest
         {
             Login window = new Login();
             window.Show();
-            //this.Close();
+            
         }
     }
 }

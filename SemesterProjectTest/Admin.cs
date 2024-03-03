@@ -11,22 +11,22 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Xml.Linq;
+using MongoDB.Driver.Core.Configuration;
 
 namespace SemesterProjectTest
 {
-    //connection not working 
+    
     public partial class Admin : Form
     {
-
-        static MongoClient dbClient = new MongoClient("mongodb+srv://kloeepratt:P0mP0mPur1n@cluster0.cokpytk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
-
+       
+        static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/");
         static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
-        static IMongoCollection<Restaraunt> collection = db.GetCollection<users>("users");
+        static IMongoCollection<User> collection = db.GetCollection<User>("users");
 
 
-        
+
         public Admin()
-        {
+        { 
             InitializeComponent();
             DisplayUsers();
         }
@@ -38,7 +38,7 @@ namespace SemesterProjectTest
 
         public void DisplayUsers()
         {
-            List<Restaraunt> list = collection.AsQueryable().ToList();
+            List<User> list = collection.AsQueryable().ToList();
             dataGridView1.DataSource = list;
         }
 
@@ -52,11 +52,11 @@ namespace SemesterProjectTest
 
         private void adBtnInsert_Click(object sender, EventArgs e)
         {
-            var filter = Builders<Restaraunt>.Filter.Eq("ID", txtID.Text);
+            var filter = Builders<User>.Filter.Eq("ID", txtID.Text);
             var docs = collection.Find(filter).ToList();
             if (true)
             {
-                Users users = new User()
+                User users = new User()
                 {
                     ID = Convert.ToInt32(txtID.Text),
                     Username = txtUsername.Text,
@@ -77,7 +77,7 @@ namespace SemesterProjectTest
 
         private void adBtnDelete_Click(object sender, EventArgs e)
         {
-            var filter = Builders<Restaraunt>.Filter.Eq("_id", txtID.Text);
+            var filter = Builders<User>.Filter.Eq("_id", txtID.Text);
             collection.DeleteOne(filter);
             DisplayUsers();
 
@@ -87,8 +87,8 @@ namespace SemesterProjectTest
         {
             try
             {
-                var update = Builders<Restaraunt>.Update.Set("Username", txtUsername.Text).Set("Password", txtPassword.Text).Set("Role", txtRole.Text);
-                var filter = Builders<Restaraunt>.Filter.Eq("_id", ObjectId.Parse(txtID.Text));
+                var update = Builders<User>.Update.Set("Username", txtUsername.Text).Set("Password", txtPassword.Text).Set("Role", txtRole.Text);
+                var filter = Builders<User>.Filter.Eq("_id", ObjectId.Parse(txtID.Text));
 
                 collection.UpdateOne(filter, update);
             }
@@ -120,7 +120,7 @@ namespace SemesterProjectTest
 
             [BsonElement("Username")]
 
-            public string Name { get; set; }
+            public string Username { get; set; }
 
             [BsonElement("Password")]
 
@@ -130,5 +130,4 @@ namespace SemesterProjectTest
 
             public string Role { get; set; }
         }
-
     }

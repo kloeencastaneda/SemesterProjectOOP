@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +15,15 @@ namespace SemesterProjectTest
 {
     public partial class Login : Form
     {
-        static MongoClient dbClient = new MongoClient("mongodb+srv://kloeepratt:P0mP0mPur1n@cluster0.cokpytk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
+        static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/");
         static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
-        static IMongoCollection<Restaraunt> collection = db.GetCollection<users>("users");
+        static IMongoCollection<User> collection = db.GetCollection<User>("users");
+
         public Login()
         {
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,9 +47,8 @@ namespace SemesterProjectTest
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //need to database
 
-            int role = 0;
+            int role = 2;
 
             if (role == 0) { 
                 Admin window = new Admin();
@@ -67,13 +70,26 @@ namespace SemesterProjectTest
             }
         }
     }
-
-    public class User
+    class User
     {
-        public string ID { get; set; }
+        [BsonId]
+
+        public ObjectId _id { get; set; }
+
+        [BsonElement("ID")]
+        public int ID { get; set; }
+
+        [BsonElement("Username")]
+
         public string Username { get; set; }
+
+        [BsonElement("Password")]
+
         public string Password { get; set; }
+
+        [BsonElement("Role")]
+
         public string Role { get; set; }
     }
-    
+
 }
