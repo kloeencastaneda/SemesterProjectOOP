@@ -23,14 +23,19 @@ namespace SemesterProjectTest
         static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
         static IMongoCollection<User> collection = db.GetCollection<User>("users");
 
-
-
         public Admin()
         { 
             InitializeComponent();
             DisplayUsers();
         }
 
+
+        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Login window = new Login();
+            window.Show();
+
+        }
         private void adBtnDisplay_Click(object sender, EventArgs e)
         {
   
@@ -107,6 +112,7 @@ namespace SemesterProjectTest
             window.Show();
         }
     }
+
 
 
     class Users

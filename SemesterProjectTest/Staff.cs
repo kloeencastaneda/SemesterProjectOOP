@@ -18,9 +18,17 @@ namespace SemesterProjectTest
         static MongoClient dbClient = new MongoClient("mongodb://localhost:27017/");
         static IMongoDatabase db = dbClient.GetDatabase("Restaraunt");
         static IMongoCollection<Tables> collection = db.GetCollection<Tables>("tables");
+
+ 
         public Staff()
         {
             InitializeComponent();
+        }
+
+        private void Staff_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Login window = new Login();
+            window.Show();
         }
 
         private void btn1_Click(object sender, EventArgs e)
