@@ -34,7 +34,9 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtRole = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -45,7 +47,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(169)))), ((int)(((byte)(110)))));
-            this.btnLogin.Location = new System.Drawing.Point(33, 391);
+            this.btnLogin.Location = new System.Drawing.Point(33, 484);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(148, 53);
             this.btnLogin.TabIndex = 0;
@@ -87,11 +89,18 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(161)))), ((int)(((byte)(105)))));
-            this.label2.Location = new System.Drawing.Point(28, 171);
+            this.label2.Location = new System.Drawing.Point(32, 171);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 27);
             this.label2.TabIndex = 4;
             this.label2.Text = "Username";
+            // 
+            // txtRole
+            // 
+            this.txtRole.Location = new System.Drawing.Point(33, 422);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.Size = new System.Drawing.Size(189, 20);
+            this.txtRole.TabIndex = 6;
             // 
             // label3
             // 
@@ -99,11 +108,23 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(57)))), ((int)(((byte)(73)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(161)))), ((int)(((byte)(105)))));
-            this.label3.Location = new System.Drawing.Point(28, 276);
+            this.label3.Location = new System.Drawing.Point(32, 286);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 27);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Password";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(57)))), ((int)(((byte)(73)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(161)))), ((int)(((byte)(105)))));
+            this.label4.Location = new System.Drawing.Point(32, 379);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 27);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Role";
             // 
             // Login
             // 
@@ -113,7 +134,9 @@
             this.BackgroundImage = global::SemesterProjectTest.Properties.Resources.GreenTea;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(689, 678);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtRole);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPassword);
@@ -136,7 +159,9 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

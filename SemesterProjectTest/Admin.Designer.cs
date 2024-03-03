@@ -32,7 +32,6 @@
             this.adBtnInsert = new System.Windows.Forms.Button();
             this.adBtnDelete = new System.Windows.Forms.Button();
             this.adBtnUpdate = new System.Windows.Forms.Button();
-            this.goMenu = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -99,21 +98,6 @@
             this.adBtnUpdate.Text = "Update";
             this.adBtnUpdate.UseVisualStyleBackColor = false;
             this.adBtnUpdate.Click += new System.EventHandler(this.adBtnUpdate_Click);
-            // 
-            // goMenu
-            // 
-            this.goMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(41)))));
-            this.goMenu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(41)))));
-            this.goMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.goMenu.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold);
-            this.goMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(169)))), ((int)(((byte)(110)))));
-            this.goMenu.Location = new System.Drawing.Point(577, 73);
-            this.goMenu.Name = "goMenu";
-            this.goMenu.Size = new System.Drawing.Size(142, 35);
-            this.goMenu.TabIndex = 5;
-            this.goMenu.Text = "Go To Menu";
-            this.goMenu.UseVisualStyleBackColor = false;
-            this.goMenu.Click += new System.EventHandler(this.goMenu_Click);
             // 
             // txtID
             // 
@@ -214,14 +198,13 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtID);
-            this.Controls.Add(this.goMenu);
             this.Controls.Add(this.adBtnUpdate);
             this.Controls.Add(this.adBtnDelete);
             this.Controls.Add(this.adBtnInsert);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Admin";
-            this.Text = "Admin";
+            this.Text = "  ";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -234,7 +217,6 @@
         private System.Windows.Forms.Button adBtnInsert;
         private System.Windows.Forms.Button adBtnDelete;
         private System.Windows.Forms.Button adBtnUpdate;
-        private System.Windows.Forms.Button goMenu;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;

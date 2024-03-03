@@ -67,6 +67,7 @@ namespace SemesterProjectTest
                 Staff window = new Staff();
                 this.Hide();
                 window.Show();
+
             }
         }
     }
