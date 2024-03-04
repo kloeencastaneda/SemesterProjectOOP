@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SemesterProjectTest
 {
-
+    //no table found???
     public partial class Admin : Form
     {
 
@@ -45,7 +45,7 @@ namespace SemesterProjectTest
             sql_conn.Close();
         }
 
-private void Admin_FormClosing(object sender, FormClosingEventArgs e)
+        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Login window = new Login();
             window.Show();
@@ -56,16 +56,29 @@ private void Admin_FormClosing(object sender, FormClosingEventArgs e)
   
         }
 
-    private void LoadData() 
+        static void CreateTable(SQLiteConnection conn)
+        {
+
+            SQLiteCommand sqlite_cmd;
+            string Createsql = "CREATE TABLE users(ID INT, Username VARCHAR(20), Password VARCHAR(20), Role VARCHAR(20)";
+             sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd.CommandText = Createsql;
+            sqlite_cmd.ExecuteNonQuery();
+
+
+        }
+
+
+        private void LoadData() 
         {
             SetConnection();
             sql_conn.Open();
             sql_cmd = sql_conn.CreateCommand();
             string CommandText = "SELECT * FROM users";
             DB = new SQLiteDataAdapter(CommandText, sql_conn);
-            DS.Reset();
-            DB.Fill(DS);
-            DT = DS.Tables[0];
+            //DS.Reset();
+            //DB.Fill(DS);
+            //DT = DS.Tables[1];
             dataGridView1.DataSource = DT;
             sql_conn.Close();
         }
